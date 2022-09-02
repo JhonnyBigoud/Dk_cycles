@@ -1,4 +1,6 @@
 <?php
+session_start();
+// A mettre avant le HTML.
 
 spl_autoload_register(function ($className) {
     if(file_exists('../controller/' . $className . '.php')) {

@@ -18,8 +18,14 @@
                     </div>
             </li>
             <li><a href="#">Panier</a></li>
-            <li id="login"><a href="#">Se connecter</a></li>
+            <?php if (isset($_SESSION['userId'])) { ?>
+                <li class="nav-link">
+                    <a href="/deconnexion" class="nav-link">Se déconnecter</a>
+                </li>
+                <?php } else {?>
+            <li id="login"><a href="/connexion">Se connecter</a></li>
             <li id="signup"><a href="/inscription">S'inscrire</a></li>
+            <?php } ?>
         </ul>
     </nav>
     <p class="btn">menu</p>

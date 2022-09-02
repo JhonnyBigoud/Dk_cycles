@@ -8,9 +8,18 @@ class User extends Model
 
         $query = $bdd->prepare('INSERT INTO `users` (`firstname`,`name`,`email`,`password`) VALUES (:firstname, :name, :email, :password)');
 
-        $query->execute($userData);
-
         return $query->execute($userData);
         
+    }
+
+    public function getUserByEmail(string $email): bool|array
+    {
+        $bdd = $this->connect();
+
+        $query = $bdd->prepare('SELECT * FROM `users` WHERE `email`= ?');
+
+        $query->execute([$email]);
+
+        return $query->fetch();
     }
 }
